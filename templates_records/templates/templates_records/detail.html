@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title%} Record {% endblock%}
+
+{% block content%}
+<h1 class="display-4">Record</h1>
+<div class="row">
+  <div class="col-md-6">
+      <p><b>Phone</b>: {{object.phone}}</p>
+      <p><b>Description</b>: {{object.description}}</p>
+      <p><b>Status</b>: {{object.status.title}}</p>
+      <p><b>User</b>: {{object.user.username}}</p>
+      <a href="{% url 'templates_records:home'%}">
+      <button type="button" class="btn btn-primary btn-md">Back</button></a>
+  </div>
+</div>
+{% endblock%}

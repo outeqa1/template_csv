@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title%} Records {% endblock%}
+
+{% block content%}
+<h1 class="display-4 text-center my-4">Records</h1>
+
+  <div class="col md-4 mx-auto">
+     <table class="table table-striped">
+         <thead>
+         <tr>
+             <th>Phone</th>
+             <th>Description</th>
+             <th>Status</th>
+             <th>Created at</th>
+         </tr>
+         </thead>
+          <tbody>
+          {% for object in object_list%}
+            <tr>
+                <td>
+                    <a href='{% url "templates_records:record" pk=object.pk %}'>
+                        {{object.phone}}
+                    </a>
+                </td>
+
+                <td>
+                    {{object.description}}
+                </td>
+                <td>
+                    {{object.status.title}}
+                </td>
+                <td>
+                    {{object.created_at}}
+                </td>
+            </tr>
+          {% endfor %}
+          </tbody>
+     </table>
+    <a href='{% url "templates_records:add"%}'>
+                    <button type="button" class="btn btn-info btn-sm">Add record</button>
+    </a>
+    <a href='{% url "templates_records:template"%}'>
+                    <button type="button" class="btn btn-info btn-sm">Template</button>
+    </a>
+  </div>
+
+{% endblock%}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title%} Login page {% endblock%}
+
+{% block content%}
+<h1 class="display-4">Sign into system</h1>
+<div class="row mx-auto">
+  <div class="col-md-6">
+       <form action="" method="post"> {% csrf_token %}
+  {{form.as_p}}<br>
+  <input type="submit" value="Sign in">
+</form>
+  </div>
+</div>
+
+{% endblock%}

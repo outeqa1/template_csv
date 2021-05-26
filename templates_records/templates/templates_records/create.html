@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title%} Adding a record {% endblock%}
+
+{% block content%}
+<h1 class="display-4">Add a new record</h1>
+<div class="row mx-auto">
+  <div class="col-md-4">
+       <form action="" method="post"> {% csrf_token %}
+  {{form.as_p}}<br>
+  <input type="submit" value="Add">
+</form>
+  </div>
+</div>
+
+{% endblock%}
