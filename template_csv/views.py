@@ -2,8 +2,9 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from .forms import UserLoginForm
 
+
 def home_view(request):
-    context = {'name': 'hui'}
+    context = {'name': 'Akzhol'}
     return render(request, 'home.html', context)
 
 
