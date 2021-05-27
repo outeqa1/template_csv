@@ -10,17 +10,18 @@ class RecordForm(forms.ModelForm):
 
     description = forms.CharField(label="Description",
                                   widget=forms.TextInput(
-                                         attrs={'class': 'form-control',
-                                                'placeholder': 'description'}))
+                                      attrs={'class': 'form-control',
+                                             'placeholder': 'description'}))
 
     class Meta:
         model = Record
         fields = ('phone', 'description', 'status')
 
+
 FIELDS_CHOICES = (
     ('phone', 'phone'),
     ('description', 'description'),
-    ('status', 'status'),
+    ('status__title', 'status'),
     ('created_at', 'created_at')
 )
 
@@ -29,6 +30,8 @@ NAME_CHOICES = (
     ('username', 'username'),
 )
 
+
 class TemplateForm(forms.Form):
-    record_fields = forms.MultipleChoiceField(choices=FIELDS_CHOICES, widget=forms.CheckboxSelectMultiple(), required=False)
+    record_fields = forms.MultipleChoiceField(choices=FIELDS_CHOICES, widget=forms.CheckboxSelectMultiple(),
+                                              required=False)
     name_fields = forms.MultipleChoiceField(choices=NAME_CHOICES, widget=forms.CheckboxSelectMultiple(), required=False)

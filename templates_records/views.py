@@ -13,11 +13,11 @@ from .models import Record
 from .forms import RecordForm, TemplateForm
 from .utils import generate_csv_name, change_phone
 
+
 @login_required(login_url='/login')
 def home(request):
     records = Record.objects.filter(user__id=request.user.id)
     return render(request, 'templates_records/home.html', {'object_list': records})
-
 
 
 @login_required(login_url='/login')
@@ -31,8 +31,6 @@ def template(request):
                 content_type='text/csv',
                 headers={f'Content-Disposition': f'attachment; filename="{generate_csv_name(name_fields, request)}"'},
             )
-            if "status" in record_fields:
-                record_fields[record_fields.index("status")] = "status__title"
             records = Record.objects.filter(user__id=request.user.id).values_list('id', *tuple(record_fields))
 
             writer = csv.writer(response)
